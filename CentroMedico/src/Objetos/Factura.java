@@ -5,6 +5,7 @@
  */
 package Objetos;
 
+import TDA.Listas.ListaEnlazada;
 import TDA.Utilidades;
 
 /**
@@ -17,16 +18,16 @@ public class Factura {
     private String consecutivo;
     private Medico medico;
     private Asistente asistente;
-    private ServicioMedico servicioMedico;
+    private ListaEnlazada  servicioMedico;
     private Paciente paciente;
     private boolean pagada;
     private static int contador = 0;
 
-    public Factura(Medico medico, Asistente asistente, ServicioMedico descripcion,boolean pagada,Paciente paciente) {
+    public Factura(Medico medico, Asistente asistente, ListaEnlazada descripcion,boolean pagada,Paciente paciente) {
         this.consecutivo = u.formatoNumero(++contador);
         this.medico = medico;
         this.paciente=paciente;
-        this.pagada=pagada=false;
+        this.pagada=pagada;
         this.asistente = asistente;
         this.servicioMedico = descripcion;
        
@@ -56,19 +57,17 @@ public class Factura {
         this.asistente = asistente;
     }
 
-    public ServicioMedico getDescripcion() {
-        return servicioMedico;
-    }
+  
 
-    public void setDescripcion(ServicioMedico descripcion) {
+    public void setDescripcion(ListaEnlazada descripcion) {
         this.servicioMedico = descripcion;
     }
 
-    public ServicioMedico getServicioMedico() {
+    public ListaEnlazada getServicioMedico() {
         return servicioMedico;
     }
 
-    public void setServicioMedico(ServicioMedico servicioMedico) {
+    public void setServicioMedico(ListaEnlazada servicioMedico) {
         this.servicioMedico = servicioMedico;
     }
 
@@ -92,9 +91,11 @@ public class Factura {
 
     @Override
     public String toString() {
-      String mensaje="FACTURA HOSPTIAL CIMA";
-      mensaje+="Número de factura : "+ consecutivo+"\nMédico : "+medico+"\nPaciente"+paciente+"\nAsistente: "+asistente+"\nServicio Medico : "+
-              servicioMedico.toString();
+      String mensaje="-----------------------------------------\nFACTURA MEDICA  HOSPTIAL CIMA\n-----------------------------------------\n";
+      mensaje+="Número de factura : "+ consecutivo+"\nMédico : "+medico.getNombre()+" "+ medico.getApellidos()+". Cod : "+medico.getCodDoctor()+
+              "\nPaciente "+paciente.getNombre()+" "+paciente.getApellidos()+" Cédula: "+paciente.getCedula()+"\nAsistente: "+asistente.getNombre()+
+              " "+asistente.getApellidos()+". Codigo : "+asistente.getCodigo()+"\n\nServicio Medico : \n-------------------------------------\n"+
+              servicioMedico.toString()+"-------------------------------------\n"+"\n\nGracias por su visita.\n";
       return mensaje;
     }
 

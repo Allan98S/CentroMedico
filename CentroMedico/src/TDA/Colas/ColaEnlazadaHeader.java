@@ -13,8 +13,8 @@ import java.io.Serializable;
 
 public class ColaEnlazadaHeader implements Cola, Serializable {
 
-    private Nodo inicio, anterior, posterior;
-    private Nodo fin;
+    public Nodo inicio, anterior, posterior;
+    public Nodo fin;
     private int contador;// Nos lleva el control de los elementos encolados
     Utilidades u = new Utilidades();
 
@@ -81,7 +81,7 @@ public class ColaEnlazadaHeader implements Cola, Serializable {
 
         anterior = fin.ant;
 
-        System.out.println(fin.elemento);
+       
 
         contador++;
 

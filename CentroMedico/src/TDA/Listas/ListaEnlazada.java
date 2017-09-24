@@ -371,6 +371,8 @@ public class ListaEnlazada implements Lista, Serializable {
         return result;
 
     }
+    
+    
 
     @Override
     public Object posterior(Object elemento) throws ListaException {

@@ -13,6 +13,7 @@ import Objetos.Paciente;
 import TDA.ArbolBinarioSimple;
 import TDA.Colas.ColaException;
 import TDA.Colas.ColaEnlazadaHeader;
+import TDA.Colas.Nodo;
 import TDA.GrafoListaEnlazada.GrafoListaEnlazada;
 import TDA.Listas.ListaCircular;
 import TDA.Listas.ListaEnlazada;
@@ -227,23 +228,32 @@ public class LogicaMedico {
         }
         return existe;
     }
-    
-    public void agregaFactura(Factura factura) throws ColaException{
-        if(colaFacturas.isEmpty()){
+
+    public void agregaFactura(Factura factura) throws ColaException {
+        if (colaFacturas.isEmpty()) {
             colaFacturas.encolar(factura);
-        }
-        else if(!existeFactura(factura)){
+        } else if (!existeFactura(factura)) {
             colaFacturas.encolar(factura);
-        }
-        else{
+        } else {
             System.out.println("No se pudo insertar");
         }
     }
-    
-    private boolean existeFactura(Factura factura) throws ColaException{
-       return colaFacturas.existe(factura);
+
+    private boolean existeFactura(Factura factura) throws ColaException {
+        if (colaFacturas.isEmpty()) {
+            throw new ColaException("La cola esta vacia");
+        }//if
+        Nodo aux = colaFacturas.inicio.sgte;
+        while (aux != null) {
+            Factura f = (Factura) aux.elemento;
+            if (f.getConsecutivo().equalsIgnoreCase(factura.getConsecutivo())) {
+                return true;
+            }//if
+            aux = aux.sgte;
+        }
+        return false;
+
     }
-    
 
     public String verCitas() throws ListaException {
         String citas = "CITAS ACTUALES DEL SISTEMA\n";
@@ -261,5 +271,25 @@ public class LogicaMedico {
         salida += listaPacientes.toString();
 
         return salida;
+    }
+
+    public String muestraFacturas() throws ColaException {
+       String salida="";
+        if (colaFacturas.isEmpty()) {
+            throw new ColaException("La cola esta vacia");
+        }//if
+        Nodo aux = colaFacturas.inicio.sgte;
+        while (aux != null) {
+            Factura f = (Factura) aux.elemento;
+            if (f.isPagada()==false) {
+              salida+="\n"+ f.toString();
+            }//if
+            else{
+            salida+="\nLa factura "+ f.getConsecutivo()+" ya fue pagada";
+            }
+            aux = aux.sgte;
+        }
+        return salida;
+
     }
 }
