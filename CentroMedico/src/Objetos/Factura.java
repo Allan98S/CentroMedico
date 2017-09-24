@@ -18,12 +18,15 @@ public class Factura {
     private Medico medico;
     private Asistente asistente;
     private ServicioMedico servicioMedico;
-
+    private Paciente paciente;
+    private boolean pagada;
     private static int contador = 0;
 
-    public Factura(Medico medico, Asistente asistente, ServicioMedico descripcion) {
+    public Factura(Medico medico, Asistente asistente, ServicioMedico descripcion,boolean pagada,Paciente paciente) {
         this.consecutivo = u.formatoNumero(++contador);
         this.medico = medico;
+        this.paciente=paciente;
+        this.pagada=pagada=false;
         this.asistente = asistente;
         this.servicioMedico = descripcion;
        
@@ -61,12 +64,36 @@ public class Factura {
         this.servicioMedico = descripcion;
     }
 
+    public ServicioMedico getServicioMedico() {
+        return servicioMedico;
+    }
+
+    public void setServicioMedico(ServicioMedico servicioMedico) {
+        this.servicioMedico = servicioMedico;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public boolean isPagada() {
+        return pagada;
+    }
+
+    public void setPagada(boolean pagada) {
+        this.pagada = pagada;
+    }
+
    
 
     @Override
     public String toString() {
       String mensaje="FACTURA HOSPTIAL CIMA";
-      mensaje+="Número de factura : "+ consecutivo+"\nMédico : "+medico+"\nAsistente: "+asistente+"\nServicio Medico : "+
+      mensaje+="Número de factura : "+ consecutivo+"\nMédico : "+medico+"\nPaciente"+paciente+"\nAsistente: "+asistente+"\nServicio Medico : "+
               servicioMedico.toString();
       return mensaje;
     }

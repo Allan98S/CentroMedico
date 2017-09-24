@@ -1,6 +1,7 @@
-package TDA;
+package TDA.Colas;
 
 import TDA.Colas.Nodo;
+import TDA.Utilidades;
 
 public class ColaEnlazada implements Cola {
 

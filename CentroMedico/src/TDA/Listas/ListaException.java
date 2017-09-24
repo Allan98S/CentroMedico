@@ -7,3 +7,5 @@ public class ListaException extends Exception {
         super(err);
     }//Constructor
 }
+
+

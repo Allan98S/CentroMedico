@@ -6,8 +6,8 @@
 package TDA.GrafoListaEnlazada;
 
 import TDA.Listas.ListaException;
-import TDA.ColaArreglo;
-import TDA.ColaException;
+import TDA.Colas.ColaArreglo;
+import TDA.Colas.ColaException;
 import TDA.PilaEnlazada;
 import TDA.PilaLlenaException;
 import TDA.PilaVaciaException;

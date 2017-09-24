@@ -1,4 +1,6 @@
-package TDA;
+package TDA.Colas;
+
+import TDA.Utilidades;
 
 public class ColaArreglo implements Cola {
 

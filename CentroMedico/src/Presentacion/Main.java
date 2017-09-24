@@ -5,6 +5,7 @@
  */
 package Presentacion;
 
+import TDA.Colas.ColaException;
 import TDA.Listas.ListaException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,8 +22,9 @@ public class Main {
     public static void main(String[] args) {
         try {
             Pruebas p=new Pruebas();
-            p.pruebaPacientes();
-        } catch (ListaException ex) {
+         //   p.pruebaPacientes();
+            p.pruebaFacturas();
+        } catch (ColaException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
