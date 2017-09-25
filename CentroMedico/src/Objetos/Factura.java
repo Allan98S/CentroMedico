@@ -96,7 +96,7 @@ public class Factura {
               "\nPaciente "+paciente.getNombre()+" "+paciente.getApellidos()+" Cédula: "+paciente.getCedula()+"\nAsistente: "+asistente.getNombre()+
               " "+asistente.getApellidos()+". Codigo : "+asistente.getCodigo()+"\n\nServicio Medico : \n-------------------------------------\n"+
               servicioMedico.toString()+"-------------------------------------\n"+"\n\nGracias por su visita.\n";
-      return mensaje;
+      return mensaje;///
     }
 
 }
